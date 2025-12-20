@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Islamic Digital World</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      background: #c0e0d3;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: #333;
+    }
+    .content-wrapper {
+      text-align: center;
+      padding: 40px;
+      max-width: 90%;
+      animation: fadeInScale 1.8s ease-out;
+    }
+    .date-line {
+      font-size: 1.4rem;
+      color: #444;
+      margin-bottom: 12px;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
+      animation-delay: 0.4s;
+    }
+    .time {
+      font-size: 4.5rem;
+      font-weight: bold;
+      color: #00695c;
+      margin: 15px 0;
+      text-shadow: 0 0 25px rgba(0, 105, 92, 0.4);
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
+      animation-delay: 0.6s;
+    }
+    .title {
+      font-size: 3.5rem;
+      color: #00695c;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      margin: 20px 0 10px;
+      text-shadow: 0 0 30px rgba(0, 105, 92, 0.5);
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards, glowPulse 4s infinite alternate;
+      animation-delay: 0.8s;
+    }
+    .subtitle {
+      font-size: 1.4rem;
+      color: #555;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
+      animation-delay: 1s;
+    }
+    /* WARNING MODAL */
+    #sourceWarning {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.7s ease;
+    }
+    #sourceWarning.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .warning-content {
+      text-align: center;
+      color: #fff;
+      padding: 50px 40px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #1a3c34, #00695c);
+      box-shadow: 0 0 50px rgba(0, 150, 136, 0.7);
+      transform: scale(0.7) rotate(-3deg);
+      opacity: 0;
+      max-width: 90%;
+      animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    }
+    .warning-text {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-shadow: 0 0 25px rgba(255, 255, 255, 0.9);
+      animation: pulseGlow 2.5s infinite alternate;
+    }
+    .warning-sub {
+      font-size: 1.4rem;
+      margin-bottom: 35px;
+      opacity: 0.95;
+      animation: fadeIn 1.2s ease-out forwards 0.4s;
+    }
+    .close-btn {
+      background: #fff;
+      color: #00695c;
+      border: none;
+      padding: 14px 40px;
+      font-size: 1.2rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: all 0.4s;
+    }
+    .close-btn:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInScale { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes glowPulse { from { text-shadow: 0 0 20px rgba(0, 105, 92, 0.5); } to { text-shadow: 0 0 45px rgba(0, 105, 92, 0.9); } }
+    @keyframes pulseGlow { from { text-shadow: 0 0 20px rgba(255,255,255,0.7); } to { text-shadow: 0 0 50px rgba(255,255,255,1); } }
+    @keyframes bounceIn {
+      0% { transform: scale(0.7) rotate(-3deg); opacity: 0; }
+      60% { transform: scale(1.05) rotate(2deg); opacity: 1; }
+      80% { transform: scale(0.98) rotate(-1deg); }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+    .particle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: rgba(0, 255, 200, 0.9);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: floatUp 5s infinite ease-out;
+      opacity: 0;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(0); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(-400px) scale(0.6); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="content-wrapper">
+    <div class="date-line" id="dateLine">Loading date...</div>
+    <div class="time" id="timeDisplay">00:00:00</div>
+    <h1 class="title">Islamic Digital World</h1>
+    <p class="subtitle">Your Complete Islamic Companion</p>
+  </div>
+
+  <!-- WARNING MODAL -->
+  <div id="sourceWarning">
+    <div class="warning-content">
+      <h1 class="warning-text">It's a mad day to you! 😜</h1>
+      <p class="warning-sub">Caught you sneaking around the code!<br>Come on, let's enjoy the app together instead 😉</p>
+      <button class="close-btn" id="closeWarning">Got it! 👍</button>
+    </div>
+  </div>
+
+  <script>
+    const dateLineEl = document.getElementById('dateLine');
+    const timeEl = document.getElementById('timeDisplay');
+
+    function updateDateTime() {
+      const now = new Date();
+
+      // Gregorian date only (no Hijri)
+      const gregorian = now.toLocaleDateString('en-US', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      });
+
+      dateLineEl.textContent = gregorian;
+
+      // Time in 12-hour format with seconds
+      const timeString = now.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      });
+      timeEl.textContent = timeString;
+    }
+
+    // Update immediately and every second
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+
+    // === Warning Modal & Protection (unchanged) ===
+    const warning = document.getElementById('sourceWarning');
+    const closeBtn = document.getElementById('closeWarning');
+
+    function showWarning() {
+      warning.classList.add('active');
+      createParticles(50);
+      document.querySelector('.content-wrapper').style.animation = 'shake 0.5s';
+      setTimeout(() => document.querySelector('.content-wrapper').style.animation = '', 500);
+    }
+
+    function hideWarning() {
+      warning.classList.remove('active');
+    }
+
+    closeBtn.onclick = hideWarning;
+    warning.onclick = (e) => { if (e.target === warning) hideWarning(); };
+
+    document.addEventListener('contextmenu', (e) => { e.preventDefault(); showWarning(); });
+
+    document.addEventListener('keydown', (e) => {
+      if (
+        (e.ctrlKey && (e.key === 'u' || e.key === 'U')) ||
+        e.key === 'F12' ||
+        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c'))
+      ) {
+        e.preventDefault();
+        showWarning();
+      }
+    });
+
+    let pressTimer;
+    document.addEventListener('touchstart', () => { pressTimer = setTimeout(showWarning, 800); });
+    document.addEventListener('touchend', () => clearTimeout(pressTimer));
+    document.addEventListener('touchcancel', () => clearTimeout(pressTimer));
+
+    function createParticles(count) {
+      for (let i = 0; i < count; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.top = Math.random() * 100 + 'vh';
+        p.style.animationDelay = Math.random() * 0.6 + 's';
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 6000);
+      }
+    }
+
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes shake {
+        0% { transform: translateX(0); }
+        25% { transform: translateX(-8px); }
+        50% { transform: translateX(8px); }
+        75% { transform: translateX(-6px); }
+        100% { transform: translateX(0); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
