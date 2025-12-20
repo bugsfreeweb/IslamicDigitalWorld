@@ -82,15 +82,6 @@ Islamic Digital World is a comprehensive Islamic web application that provides e
 
 ---
 
-## Technical Specifications
-
-### Technologies Used
-- **HTML5** - Semantic markup
-- **CSS3** - Modern styling with CSS variables
-- **JavaScript (ES6+)** - Vanilla JS, no framework dependencies
-- **Leaflet.js** - Interactive maps
-- **Phosphor Icons** - Beautiful icon set
-
 ### APIs & Services
 - **Al-Quran Cloud API** - Quran text and audio
 - **Aladhan API** - Prayer times calculation
@@ -129,25 +120,6 @@ Upload all files to any static hosting service:
 - GitHub Pages
 - Firebase Hosting
 - AWS S3
-
----
-
-## Project Structure
-
-```
-islamic-digital-world/
-├── index.html          # Main HTML file
-├── manifest.json       # PWA manifest
-├── sw.js              # Service Worker
-├── README.md          # Documentation
-├── css/
-│   └── styles.css     # All styles (127 KB)
-├── js/
-│   └── app.js         # Application logic (243 KB)
-└── imgs/
-    ├── logo.png       # App logo (91 KB)
-    └── banner.png     # Banner image (65 KB)
-```
 
 ---
 
