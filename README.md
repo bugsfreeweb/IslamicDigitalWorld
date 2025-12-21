@@ -2,7 +2,7 @@
 
 **Your Complete Islamic Companion** - A modern, feature-rich Progressive Web Application (PWA) for Muslims worldwide.
 
-![Islamic Digital World](assets/homescreen-bg.png)
+![Islamic Digital World](assts/homescreen-bg.png)
 
 ---
 
@@ -16,8 +16,8 @@ Islamic Digital World is a comprehensive Islamic web application that provides e
 
 ### Quran Suite
 - **Complete Quran** - All 114 Surahs with Arabic text
-- **Audio Recitation** - Multiple renowned reciters (Al-Afasy, Al-Husary, Maher Al-Muaiqly, Saad Al-Ghamdi, Shuraim)
-- **Translations** - English, Bengali, Hindi, Urdu translations
+- **Audio Recitation** - Verse-by-verse audio playback
+- **11 Translations** - Arabic, English, Bengali, Urdu, Spanish, French, Indonesian, Russian, Turkish, Chinese, Hindi
 - **Tajweed Mode** - Enhanced reading with pronunciation rules
 - **Bookmarking** - Save and organize favorite verses
 - **Memorization Tracker** - Track your Quran memorization progress
@@ -27,14 +27,14 @@ Islamic Digital World is a comprehensive Islamic web application that provides e
 
 ### Hadith Library
 - **6 Major Collections**:
-  - Sahih Bukhari (7,370 hadith)
-  - Sahih Muslim (7,596 hadith)
-  - Sunan Abu Dawud (5,260 hadith)
-  - Jami' at-Tirmidhi (4,214 hadith)
-  - Sunan an-Nasa'i (5,774 hadith)
+  - Sahih Bukhari
+  - Sahih Muslim
+  - Sunan Abu Dawud
+  - Jami' at-Tirmidhi
+  - Sunan an-Nasa'i
   - Ibn Majah
 - **Smart Search** - Search by number or keyword
-- **Multi-language Translation** - Real-time translation to Bengali, Hindi, Urdu
+- **Multi-language Translation** - Real-time translation support
 - **Memory Caching** - Fast loading with intelligent caching
 
 ### Prayer Tools
@@ -67,8 +67,7 @@ Islamic Digital World is a comprehensive Islamic web application that provides e
 - **Map Integration** - Visual restaurant locations
 
 ### Media & Tools
-- **Quran Recitation Player** - Professional audio player
-- **Azan Voices** - Multiple Azan options
+- **Quran Recitation Player** - Professional audio player with controls
 - **Background Player** - Listen while using other features
 - **Sleep Timer** - Auto-stop playback
 - **Notes & Bookmarks** - Personal annotations
@@ -76,17 +75,33 @@ Islamic Digital World is a comprehensive Islamic web application that provides e
 ### Customization
 - **Theme Toggle** - Light and Dark modes
 - **34+ Islamic Wallpapers** - Beautiful background options
+- **Wallpaper Rotation** - Auto-change on refresh or timed intervals (30/60 min)
 - **Custom Wallpaper Upload** - Use your own images
 - **Font Size Options** - Adjustable text sizes
-- **Language Support** - English, Bengali, Hindi, Urdu
 
 ---
 
-### APIs & Services
-- **Al-Quran Cloud API** - Quran text and audio
+## Technical Specifications
+
+### Technologies Used
+- **HTML5** - Semantic markup
+- **CSS3** - Modern styling with CSS variables
+- **JavaScript (ES6+)** - Vanilla JS, no framework dependencies
+- **Leaflet.js** - Interactive maps
+- **Phosphor Icons** - Beautiful icon set
+
+### Data Source
+All Quran and Hadith data is served from:
+- **IslamicData API** - `https://islamicdata.netlify.app`
+  - Quran Arabic text
+  - 11 language translations
+  - Verse-by-verse audio
+  - Tajweed data
+  - Complete Hadith collections
+
+### Other APIs & Services
 - **Aladhan API** - Prayer times calculation
 - **OpenStreetMap/Overpass API** - Mosque and location data
-- **Google Translate (via proxy)** - Real-time translations
 
 ### PWA Features
 - **Service Worker** - Offline functionality
@@ -119,7 +134,6 @@ Upload all files to any static hosting service:
 - Vercel
 - GitHub Pages
 - Firebase Hosting
-- AWS S3
 
 ---
 
@@ -127,11 +141,11 @@ Upload all files to any static hosting service:
 
 | Browser | Minimum Version |
 |---------|-----------------|
-| Chrome | 80+ |
+| Chrome  | 80+ |
 | Firefox | 75+ |
-| Safari | 13+ |
-| Edge | 80+ |
-| Opera | 67+ |
+| Safari  | 13+ |
+| Edge    | 80+ |
+| Opera   | 67+ |
 
 ---
 
@@ -147,7 +161,7 @@ Upload all files to any static hosting service:
 ## Configuration
 
 ### Theme Colors
-The app uses CSS variables for theming. Main colors:
+The app uses CSS variables for theming:
 ```css
 --primary: #10b981 (Emerald Green)
 --primary-dark: #059669
@@ -158,22 +172,10 @@ The app uses CSS variables for theming. Main colors:
 Located in `js/app.js`:
 ```javascript
 const CONFIG = {
-    API_BASE: 'https://api.alquran.cloud/v1',
-    STORAGE_KEY: 'islamic-guide-prefs',
-    BOOKMARKS_KEY: 'islamic-guide-bookmarks'
+    API_BASE: 'https://islamicdata.netlify.app/AlQuran',
+    HADITH_BASE: 'https://islamicdata.netlify.app/Hadiths/JSON'
 };
 ```
-
----
-
-## Performance
-
-| Metric | Value |
-|--------|-------|
-| Total Size | ~500 KB (excluding images) |
-| First Load | ~2-3 seconds |
-| Cached Load | <1 second |
-| Lighthouse Score | 90+ |
 
 ---
 
@@ -188,25 +190,6 @@ The app caches:
 
 ---
 
-## Known Limitations
-
-1. **Translation API** - May have rate limits on heavy usage
-2. **Mosque Data** - Depends on OpenStreetMap coverage
-3. **Compass Accuracy** - Varies by device hardware
-4. **Offline Hadith** - Requires initial online load for caching
-
----
-
-## Contributing
-
-Contributions are welcome! Please:
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
----
-
 ## License
 
 This project is open source and available under the MIT License.
@@ -215,18 +198,10 @@ This project is open source and available under the MIT License.
 
 ## Credits
 
-- **Quran Data**: [Al-Quran Cloud](https://alquran.cloud/)
-- **Hadith Data**: [Fawaz Ahmed Hadith API](https://github.com/fawazahmed0/hadith-api)
+- **Quran & Hadith Data**: [IslamicData](https://islamicdata.netlify.app/)
 - **Prayer Times**: [Aladhan API](https://aladhan.com/)
 - **Maps**: [OpenStreetMap](https://www.openstreetmap.org/) & [Leaflet](https://leafletjs.com/)
 - **Icons**: [Phosphor Icons](https://phosphoricons.com/)
-- **Wallpapers**: [BugsFree CDN](https://bugsfreecdn.netlify.app/)
-
----
-
-## Support
-
-For issues, suggestions, or contributions, please open an issue on the repository.
 
 ---
 
