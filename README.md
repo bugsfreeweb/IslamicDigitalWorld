@@ -680,11 +680,6 @@ All pages are:
 - ✅ **Theme-Aware Borders** - Border colors automatically match each card theme
 - ✅ **Legal Pages** - Added Privacy Policy, Terms of Service, and Contact pages for ad compliance
 - ✅ **Ad Integration Guide** - Comprehensive documentation for web and mobile ad setup
-- ❌ **Removed Themes** - Removed 4 themes for streamlined experience:
-  - Orange Hexagon
-  - Outlined Hex
-  - Teal Circle
-  - Orbital Purple
 - ✅ **Theme Optimization** - Refined to 13 high-quality card themes
 
 ### Version 2.2.0 (December 2024)
