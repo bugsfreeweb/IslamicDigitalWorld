@@ -45,7 +45,7 @@
 
 | Version | URL |
 |---------|-----|
-| **Web Version** | [Launch Web App](https://islamicworld.netlify.app) |
+| **Web Version** | [Launch Web App](https://islamicworld.vercel.app) |
 
 
 ---
@@ -368,7 +368,7 @@ php -S localhost:8000
 vercel --prod
 
 # Netlify
-netlify deploy --prod
+vercel deploy --prod
 
 # GitHub Pages
 # Push to gh-pages branch
@@ -407,14 +407,14 @@ The app includes a **smart install banner** that automatically detects your devi
 ```javascript
 const CONFIG = {
     // Quran Data
-    API_BASE: 'https://islamicdata.netlify.app/AlQuran',
+    API_BASE: 'https://islamicdata.vercel.app/AlQuran',
 	
     // Hadith Collections
-    HADITH_BASE: 'https://islamicdata.netlify.app/Hadiths/JSON',
+    HADITH_BASE: 'https://islamicdata.vercel.app/Hadiths/JSON',
     
     // Quiz Questions
-    QUIZ_ADULT: 'https://islamicdata.netlify.app/Quiz/islamic_quiz.json',
-    QUIZ_KIDS: 'https://islamicdata.netlify.app/Quiz/islamic_quiz_children.json',
+    QUIZ_ADULT: 'https://islamicdata.vercel.app/Quiz/islamic_quiz.json',
+    QUIZ_KIDS: 'https://islamicdata.vercel.app/Quiz/islamic_quiz_children.json',
     
     // Prayer Times
     PRAYER_API: 'https://api.aladhan.com/v1/timings',
@@ -746,13 +746,13 @@ copies or substantial portions of the Software.
 
 | Resource | Provider |
 |----------|----------|
-| **Quran Data** | [IslamicData](https://islamicdata.netlify.app/) |
+| **Quran Data** | [IslamicData](https://islamicdata.vercel.app/) |
 | **Prayer Times** | [Aladhan API](https://aladhan.com/) |
 | **Translation** | Google Translate, MyMemory |
 | **Icons** | [Phosphor Icons](https://phosphoricons.com/) |
 | **Charts** | [Chart.js](https://www.chartjs.org/) |
 | **Backend** | [Firebase](https://firebase.google.com/) |
-| **Hosting** | [netlify](https://netlify.com/) |
+| **Hosting** | [vercel](https://vercel.com/) |
 
 ---
 
